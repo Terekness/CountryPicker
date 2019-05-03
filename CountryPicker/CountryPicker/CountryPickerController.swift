@@ -27,6 +27,7 @@ open class CountryPickerController: UIViewController {
     /// Properties for countryPicker controller
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
+    public var _searchBarPlaceholder = "Search country"
     public var labelFont = UIFont.systemFont(ofSize: 14.0) {
         didSet {
             self.tableView.reloadData()
@@ -37,9 +38,13 @@ open class CountryPickerController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    public var searchBarPlaceholder = "Search for country" {
-        didSet {
-            searchController.searchBar.placeholder
+    public var searchBarPlaceholder: String {
+        set {
+            _searchBarPlaceholder = newValue
+            searchController.searchBar.placeholder = newValue
+        }
+        get {
+            return _searchBarPlaceholder
         }
     }
     public var detailFont = UIFont.systemFont(ofSize: 11.0) {

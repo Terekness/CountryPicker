@@ -37,6 +37,11 @@ open class CountryPickerController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    public var searchBarPlaceholder = "Search for country" {
+        didSet {
+            searchController.searchBar.placeholder
+        }
+    }
     public var detailFont = UIFont.systemFont(ofSize: 11.0) {
         didSet {
             self.tableView.reloadData()
@@ -70,7 +75,7 @@ open class CountryPickerController: UIViewController {
         searchController.searchBar.barStyle = .default
         searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Search country name here.."
+        searchController.searchBar.placeholder = searchBarPlaceholder
         
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
